@@ -103,22 +103,22 @@ static void doSomeWork()
 
     if (dist != 0)
     {
-      float bearing = fix.location.BearingToDegrees(target);
-      Serial.print(bearing);
-      Serial.println(F(" bearing"));
+      float bearingThis = fix.location.BearingToDegrees(target);
+      Serial.print(bearingThis);
+      Serial.println(F(" bearingThis"));
 
       // Setting the route
       if (iterator < nLECTURAS)
       {
         // reading the angles for calculate bearingToTarget
-        AngleCalculator(bearing);
+        AngleCalculator(bearingThis);
       }
       else
       {
         // bearingToTarget ready to use
-        if (bearingToTarget != bearing)
+        if (bearingToTarget != bearingThis)
         {
-          moveTo(bearingToTarget - bearing);
+          moveTo(bearingToTarget - bearingThis);
         }
       }
       Serial.print(bearingToTarget);
